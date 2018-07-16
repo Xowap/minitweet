@@ -70,6 +70,9 @@ def extract_text(item):
     if not text:
         text = item['title']
 
+    if isinstance(text, bytes):
+        text = text.decode('utf-8')
+
     endings = len(BEFORE) + len(AFTER)
     max_length = TWITTER_LIMIT - TWITTER_LINK_SIZE - endings
 
